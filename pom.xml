@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <modules>
+        <module>easy-applications</module>
+        <module>easy-commons</module>
+        <module>easy-base</module>
+    </modules>
+
+    <groupId>com.yuyang.easy</groupId>
+    <artifactId>easy-parent</artifactId>
+    <version>1.0.0</version>
+    <name>easy-parent</name>
+
+    <!-- 所有依赖的jar版本需要在这里维护 -->
+    <properties>
+        <java.version>1.8</java.version>
+        <alibaba-spring-cloud.version>2.2.0.RELEASE</alibaba-spring-cloud.version>
+        <discovery.version>6.0.1</discovery.version>
+        <alibaba-nacos.version>2.2.1.RELEASE</alibaba-nacos.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <spring.redission.version>3.12.5</spring.redission.version>
+        <swagger.version>2.9.2</swagger.version>
+        <spring-boot.mybatis>2.1.2</spring-boot.mybatis>
+        <alibaba.druid>1.1.22</alibaba.druid>
+        <alibaba.gateway.adapter>1.8.0</alibaba.gateway.adapter>
+        <mybatis.pagehelper.version>5.0.0</mybatis.pagehelper.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba-spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery-plugin-starter-nacos</artifactId>
+                <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery-plugin-strategy-starter-zuul</artifactId>
+                <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery-plugin-strategy-starter-service</artifactId>
+                <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery-plugin-config-center-starter-nacos</artifactId>
+                <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery-plugin-strategy-starter-service-sentinel</artifactId>
+                <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery-plugin-strategy-sentinel-starter-nacos</artifactId>
+                <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${spring.redission.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${spring-boot.mybatis}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${alibaba.druid}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${alibaba.gateway.adapter}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${mybatis.pagehelper.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

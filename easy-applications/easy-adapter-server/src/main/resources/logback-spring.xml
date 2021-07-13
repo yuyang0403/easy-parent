@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+
+    <property name="app.log" value="easy-adapter-server"/>
+
+    <springProfile name="test,dev">
+        <property name="LOG_HOME" value="/logs/web_app/${app.log}/${app.log}"/>
+    </springProfile>
+
+    <springProfile name="prod">
+        <property name="LOG_HOME" value="/logs/web_app/${app.log}/${app.log}"/>
+    </springProfile>
+
+
+    <property name="PATTERN" value="%blue([%d{yyyy-MM-dd HH:mm:ss.SSSZ}]) %magenta([${app.log}]) %cyan([%thread]) %yellow([%level]) %cyan([%logger{15}]) - %green(%m%n)" />
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="async_log" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="file"/>
+    </appender>
+
+    <springProfile name="test,dev">
+        <root level="info">
+            <appender-ref ref="console"/>
+            <appender-ref ref="async_log"/>
+        </root>
+        <logger name="com.yuyang.easy" level="debug" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="async_log"/>
+        </logger>
+        <logger name="com.alibaba.nacos.client" level="warn" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="async_log"/>
+        </logger>
+    </springProfile>
+    <springProfile name="prod,formal">
+        <root level="info">
+            <appender-ref ref="console"/>
+            <appender-ref ref="async_log"/>
+        </root>
+        <logger name="com.yuyang.easy" level="info" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="async_log"/>
+        </logger>
+    </springProfile>
+</configuration>

@@ -1,0 +1,21 @@
+server:
+    port: 41111
+    servlet:
+        context-path: /customer
+spring:
+    application:
+        name: easy-customer
+    cloud:
+      nacos:
+          config:
+              group: applications
+              encode: UTF-8
+              refresh-enabled: true
+              config-retry-time: 3
+              shared-configs[0]:
+                data-id: easy-common.yml
+                group: applications
+                refresh: true
+              file-extension: yml
+    profiles:
+        active: dev

@@ -1,0 +1,21 @@
+server:
+    port: 41114
+    servlet:
+        context-path: /adapter
+spring:
+    application:
+        name: easy-adapter-server
+    cloud:
+      nacos:
+          config:
+              group: applications
+              encode: UTF-8
+              refresh-enabled: true
+              config-retry-time: 3
+              file-extension: yml
+              shared-configs[0]:
+                data-id: easy-common.yml
+                group: applications
+                refresh: true
+    profiles:
+        active: dev

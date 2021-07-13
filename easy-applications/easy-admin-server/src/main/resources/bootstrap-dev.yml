@@ -1,0 +1,6 @@
+nacos:
+    server-addr: 172.17.47.181:32222
+spring:
+    cloud:
+        nacos:
+            server-addr: 172.17.47.181:32222

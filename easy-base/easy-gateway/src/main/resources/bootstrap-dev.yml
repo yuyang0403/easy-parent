@@ -1,0 +1,6 @@
+spring:
+    cloud:
+        nacos:
+          discovery:
+            server-addr: 172.17.47.181:32222
+          server-addr: 172.17.47.181:32222

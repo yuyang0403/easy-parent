@@ -1,0 +1,27 @@
+server:
+  port: 41121
+spring:
+  application:
+    name: easy-gateway
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        group: applications
+        refresh-enabled: true
+        config-retry-time: 3
+        file-extension: yml
+        shared-configs[0]:
+          data-id: easy-common.yml
+          group: applications
+          refresh: true
+    sentinel:
+      datasource:
+        ds:
+          dataId: easy-gateway-sentinel
+          serverAddr: ${nacos.server-addr}
+          group: applications
+          dataType: json
