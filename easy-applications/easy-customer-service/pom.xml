@@ -7,9 +7,9 @@
         <artifactId>easy-applications</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>easy-customer-server</artifactId>
+    <artifactId>easy-customer-service</artifactId>
     <version>1.0.0</version>
-    <name>easy-customer-server</name>
+    <name>easy-customer-service</name>
 
     <properties>
         <java.version>1.8</java.version>

@@ -13,8 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>easy-adapter-server</module>
-        <module>easy-admin-server</module>
-        <module>easy-customer-server</module>
+        <module>easy-customer-service</module>
         <module>easy-interface-server</module>
         <module>easy-task-server</module>
     </modules>
